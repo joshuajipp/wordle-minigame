@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Wordle</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <script src="./wordle.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Wordle</title>
+  <link href='https://css.gg/dark-mode.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <header class="header">
+
+    <div class="header-flex">
+      <div class="header-logo">
+        Wordle
+      </div>
+      <div class="right-flex">
+        <i class="fa fa-moon-o menu-item" id="dark-button"></i>
+        <i class="fa fa-question-circle menu-item"></i>
+        <i class="fa fa-info-circle menu-item"></i>
+      </div>
+    </div>
+  </header>
+  <div id="game">
+    <div id="board" class="body-flex">
+
+    </div>
+    <button id="start-over" class="start-over body-flex">Start Over</button>
+  </div>
+  <script src="./wordle.js"></script>
+</body>
+
 </html>
