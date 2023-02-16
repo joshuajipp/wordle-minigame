@@ -136,19 +136,19 @@ body {
   -webkit-user-select: none;
 }
 
-/* .start-over:focus {
+.start-over:focus {
   box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-} */
+}
 
 .start-over:hover {
   box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
-/* .start-over:active {
+.start-over:active {
   box-shadow: #3c4fe0 0 3px 7px inset;
   transform: translateY(2px);
-} */
+}
 
 body.is-black {
   background: var(--dark-bg);
