@@ -173,6 +173,7 @@ function colourBoxes(word){
                     document.getElementById("tag-div").className = "correct-tag"
                     document.getElementById("hint").innerHTML = `You guessed <b>${gameState.word.toUpperCase()}</b> correctly!`
                     document.body.onkeydown = null;
+                    document.getElementById("hint-button").onclick = null;
                     return;
                     
                 }
@@ -180,6 +181,7 @@ function colourBoxes(word){
                     document.getElementById("tag-div").className = "incorrect-tag"
                     document.getElementById("hint").innerHTML = `You missed the word <b>${gameState.word.toUpperCase()}</b> and lost!`
                     document.body.onkeydown = null;
+                    document.getElementById("hint-button").onclick = null;
                     return;
                 }
                 gameState.col = 0;
@@ -214,6 +216,11 @@ function run(){
     fetchData().then(wordData =>{
         gameState.word = wordData.word;
         gameState.hint = wordData.hint;
+        document.getElementById("hint-button").onclick = function() {
+            let element = document.getElementById("tag-div")
+            element.classList.toggle("tags")
+            element.classList.toggle("is-hidden")
+        }
 
         document.body.onkeydown = manageInputs
         let element = document.getElementById("hint")
@@ -258,10 +265,6 @@ document.getElementById("rules-button").onclick = function(){
     
 }
 
-document.getElementById("hint-button").onclick = function() {
-    let element = document.getElementById("tag-div")
-    element.classList.toggle("tags")
-    element.classList.toggle("is-hidden")
-}
+
 
 run();
