@@ -19,17 +19,44 @@
       </div>
       <div class="right-flex">
         <i class="fa fa-moon-o menu-item" id="dark-button"></i>
-        <i class="fa fa-question-circle menu-item"></i>
-        <i class="fa fa-info-circle menu-item"></i>
+        <i class="fa fa-question-circle menu-item" id="hint-button"></i>
+        <i class="fa fa-info-circle menu-item" id="rules-button"></i>
       </div>
     </div>
   </header>
-  <div id="game">
-    <div id="board" class="body-flex">
+  <div id="game-wrap">
+    <div id="game" class="game-item">
+      <div id="board" class="body-flex">
 
+      </div>
+
+      <button id="start-over" class="start-over body-flex">Start Over</button>
     </div>
-    <button id="start-over" class="start-over body-flex">Start Over</button>
+
+    <div id="instr" class="is-hidden instr">
+      <h2>How To Play</h2>
+      <ul>
+        <li>Start typing. The letters will appear in the boxes.</li>
+        <li>Remove letters with backspace.</li>
+        <li>Hit Enter/Return to submit an answer.</li>
+        <li>Letters with green background are in the right spot.</li>
+        <li>Letters with yellow background exist in the word but are not in the correct spot.</li>
+        <li>Letters with gray background do not exist in the word.</li>
+        <li>If you need a hint, click <b>?</b> button.</li>
+      </ul>
+    </div>
+
   </div>
+
+  <div id="tag-div" class="is-hidden">
+    <p id="hint">
+
+    </p>
+  </div>
+  <div class="footer">
+    <p id="footer-title">Creator: Joshua Jipp</p>
+  </div>
+
   <script src="./wordle.js"></script>
 </body>
 

@@ -89,20 +89,23 @@ function winScreen(parent){
 
 }
 
-function loseScreen(parent){
-    clearGrid(parent)
-    let imgElement = document.createElement("img")
-    imgElement.src = "giphy.gif"
-    parent.appendChild(imgElement)
-
-}
-
 
 
 function displayGrid(){
+
     for (let i = 0; i < gameState.wordContent.length; i++){
-        for (let j = 0; j < gameState.wordContent[i].length; j++){
-            let box = document.getElementById(`${i}${j}`)
+        for (let j = 0; j < gameState.wordContent[i].length; j++){   
+            let box = document.getElementById(`${i}${j}`)         
+
+            if ((j==gameState.col) && (i==gameState.row)){
+                document.getElementById(`${i}${j}`).classList.add("is-hovered")
+            }
+            else{
+                document.getElementById(`${i}${j}`).classList.remove("is-hovered")
+            }
+
+
+            
             box.textContent = gameState.wordContent[i][j]
         }
     }
@@ -110,6 +113,9 @@ function displayGrid(){
 function createBox(parent, row, col, char = ''){
     let boxElement = document.createElement("div");
     boxElement.className = "box";
+    if ((row == 0) && (col == 0)){
+        boxElement.classList.add("is-hovered")
+    }
     boxElement.id = `${row}${col}`;
     boxElement.textContent = char;
 
@@ -164,12 +170,15 @@ function colourBoxes(word){
                 let isCorrect = colourBoxes(gameState.word);
                 if (isCorrect){
                     winScreen(document.getElementById("board"))
+                    document.getElementById("tag-div").className = "correct-tag"
+                    document.getElementById("hint").innerHTML = `You guessed <b>${gameState.word.toUpperCase()}</b> correctly!`
                     document.body.onkeydown = null;
                     return;
                     
                 }
                 if (gameState.row == 3){
-                    loseScreen(document.getElementById("board"))
+                    document.getElementById("tag-div").className = "incorrect-tag"
+                    document.getElementById("hint").innerHTML = `You missed the word <b>${gameState.word.toUpperCase()}</b> and lost!`
                     document.body.onkeydown = null;
                     return;
                 }
@@ -202,10 +211,15 @@ function colourBoxes(word){
 function run(){
     const run = document.getElementById("board");
     createGrid(run);
-    fetchData().then(wordData =>{
-        gameState.word = wordData.word;
-        gameState.hint = wordData.hint;
-        document.body.onkeydown = manageInputs});
+    // fetchData().then(wordData =>{
+        // gameState.word = wordData.word;
+        // gameState.hint = wordData.hint;
+        gameState.hint = "round beauties"
+        gameState.word = "tits"
+        document.body.onkeydown = manageInputs
+        let element = document.getElementById("hint")
+        element.innerHTML = `<i>Hint</i>: ${gameState.hint}`
+    // });
     //     console.log(gameState.isWinner)
     //     if (gameState.isWinner){
     //         window.alert("You won")
@@ -229,15 +243,26 @@ startOver.addEventListener('click', () => {
     gameState.row = 0
     gameState.col= 0
     gameState.wordContent= Array(4).fill().map(() => Array(4).fill(''))
-    gameState.word= ""
-    gameState.hint= ""
+
     clearGrid(document.getElementById("board"))
+    document.getElementById("tag-div").className = "is-hidden"
     run();
     // displayGrid()
 });
 
 document.getElementById("dark-button").onclick = function(){
-    document.querySelector("body").classList.toggle("is-black")
+    document.querySelector("body").classList.toggle("is-black");
+}
+document.getElementById("rules-button").onclick = function(){
+    document.getElementById("instr").classList.toggle("game-item")
+    document.getElementById("instr").classList.toggle("is-hidden")
+    
+}
+
+document.getElementById("hint-button").onclick = function() {
+    let element = document.getElementById("tag-div")
+    element.classList.toggle("tags")
+    element.classList.toggle("is-hidden")
 }
 
 run();
