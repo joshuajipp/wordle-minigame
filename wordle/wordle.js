@@ -211,15 +211,14 @@ function colourBoxes(word){
 function run(){
     const run = document.getElementById("board");
     createGrid(run);
-    // fetchData().then(wordData =>{
-        // gameState.word = wordData.word;
-        // gameState.hint = wordData.hint;
-        gameState.hint = "round beauties"
-        gameState.word = "tits"
+    fetchData().then(wordData =>{
+        gameState.word = wordData.word;
+        gameState.hint = wordData.hint;
+
         document.body.onkeydown = manageInputs
         let element = document.getElementById("hint")
         element.innerHTML = `<i>Hint</i>: ${gameState.hint}`
-    // });
+    });
     //     console.log(gameState.isWinner)
     //     if (gameState.isWinner){
     //         window.alert("You won")
