@@ -163,7 +163,6 @@ function colourBoxes(word){
 //       canManageEvents = true;
 //     };
     const manageInputs = (ev) => {
-        console.log(gameState.word)
         let key = ev.key;
         if (key === "Enter"){
             if (gameState.col == 4){
