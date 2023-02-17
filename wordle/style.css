@@ -74,19 +74,19 @@ h2{
   display: flex;
   justify-content: center;
   align-items: start;
-  margin-top:5rem;
-  margin-bottom:5rem;
+  margin-top:2rem;
+  margin-bottom:1rem;
 
 }
 #instr{
-  margin-top: 5rem;
+  margin-top: 2rem;
   width: 408px;
 }
 
 #game-wrap{
   display: flex;
   justify-content: space-evenly;
-  padding-bottom: 50px;
+  margin-bottom: 125px;
 
 
 }
